@@ -25,6 +25,53 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <audio id="bgMusic" loop autoplay preload="auto">
+    <source src="bg-music.mp3" type="audio/mpeg" />
+  </audio>
+  <script>
+    (function () {
+      var bgMusic = document.getElementById("bgMusic");
+      if (!bgMusic) return;
+
+      bgMusic.volume = 0.15;
+
+      function tryPlay() {
+        return bgMusic.play();
+      }
+
+      function kick() {
+        if (!bgMusic.paused) return;
+        tryPlay().catch(function () {});
+      }
+
+      var gestureAdded = false;
+      function addGestureFallback() {
+        if (gestureAdded) return;
+        gestureAdded = true;
+        function resume() {
+          tryPlay().catch(function () {});
+          document.removeEventListener("click", resume);
+          document.removeEventListener("keydown", resume);
+          document.removeEventListener("touchstart", resume);
+        }
+        document.addEventListener("click", resume, { passive: true });
+        document.addEventListener("keydown", resume);
+        document.addEventListener("touchstart", resume, { passive: true });
+      }
+
+      tryPlay().catch(addGestureFallback);
+
+      bgMusic.addEventListener("progress", function onProgress() {
+        if (bgMusic.buffered.length > 0 && bgMusic.buffered.end(0) > 0.01) {
+          kick();
+          if (!bgMusic.paused) bgMusic.removeEventListener("progress", onProgress);
+        }
+      });
+
+      bgMusic.addEventListener("loadeddata", kick, { once: true });
+      bgMusic.addEventListener("canplay", kick, { once: true });
+    })();
+  </script>
   <canvas id="live-bg" aria-hidden="true"></canvas>
   <header class="site-header">
     <nav class="container nav">
