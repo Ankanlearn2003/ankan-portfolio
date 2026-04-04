@@ -1,17 +1,15 @@
+// --- LIVE BACKGROUND CANVAS ---
 (function initLiveBackground() {
   const canvas = document.getElementById("live-bg");
   if (!canvas) return;
-
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
-
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let width = 0;
   let height = 0;
   let dpr = 1;
   const particles = [];
-
   const particleCount = () => (width < 520 ? 38 : width < 900 ? 62 : 88);
   const maxLinkDist = 118;
   const baseSpeed = 0.22;
@@ -58,7 +56,6 @@
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
-
     const n = particles.length;
     for (let i = 0; i < n; i += 1) {
       for (let j = i + 1; j < n; j += 1) {
@@ -78,7 +75,6 @@
         }
       }
     }
-
     for (const p of particles) {
       ctx.fillStyle = "rgba(126, 240, 195, 0.42)";
       ctx.beginPath();
@@ -95,21 +91,18 @@
 
   window.addEventListener("resize", () => {
     resize();
-    if (prefersReduced) {
-      draw();
-    }
+    if (prefersReduced) draw();
   });
 
   resize();
-
   if (prefersReduced) {
     draw();
     return;
   }
-
   window.requestAnimationFrame(loop);
 })();
 
+// --- CONTACT FORM SUBMISSION (FORMSPREE) ---
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 
@@ -141,14 +134,10 @@ if (contactForm && formStatus) {
       const response = await fetch(contactForm.action, {
         method: "POST",
         body: new FormData(contactForm),
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
       });
 
-      if (!response.ok) {
-        throw new Error("Form submission failed");
-      }
+      if (!response.ok) throw new Error("Form submission failed");
 
       contactForm.reset();
       formStatus.textContent = "Thanks! Your message has been sent successfully.";
@@ -160,8 +149,8 @@ if (contactForm && formStatus) {
   });
 }
 
+// --- SCROLL ANIMATIONS ---
 const scrollTargets = document.querySelectorAll("section, .project-card");
-
 if (scrollTargets.length > 0) {
   scrollTargets.forEach((element) => {
     element.classList.add("hidden-scroll");
@@ -176,53 +165,33 @@ if (scrollTargets.length > 0) {
         }
       });
     },
-    {
-      threshold: 0.12,
-      rootMargin: "0px 0px -30px 0px",
-    }
+    { threshold: 0.12, rootMargin: "0px 0px -30px 0px" }
   );
 
   scrollTargets.forEach((element) => observer.observe(element));
 }
 
-// Background music: browsers block unmuted autoplay — try loud play, else muted play, unmute on first gesture
-(function initBgMusic() {
-  const bgMusic = document.getElementById("bgMusic");
-  if (!bgMusic) return;
+// --- INVISIBLE BACKGROUND MUSIC AUTOPLAY ---
+const bgMusic = document.getElementById("bgMusic");
 
-  bgMusic.volume = 0.15;
-  bgMusic.muted = false;
+if (bgMusic) {
+  bgMusic.volume = 0.15; // Kept low for professional ambiance
+  let hasStartedPlaying = false;
 
-  const tryPlay = () => bgMusic.play();
+  // Function to start music on the first interaction
+  const startMusic = () => {
+    if (!hasStartedPlaying) {
+      bgMusic.play().then(() => {
+        hasStartedPlaying = true;
+      }).catch(error => {
+        console.log("Browser blocked audio playback.", error);
+      });
+    }
+  };
 
-  let unlocked = false;
-  function unlockAudio() {
-    if (unlocked) return;
-    unlocked = true;
-    bgMusic.muted = false;
-    bgMusic.volume = 0.15;
-    tryPlay().catch(() => {});
-  }
-
-  document.addEventListener("pointerdown", unlockAudio, { capture: true, passive: true });
-  document.addEventListener("touchstart", unlockAudio, { capture: true, passive: true });
-  document.addEventListener("keydown", unlockAudio, { capture: true });
-
-  tryPlay().catch(() => {
-    bgMusic.muted = true;
-    tryPlay().catch(() => {});
-  });
-
-  bgMusic.addEventListener(
-    "canplay",
-    () => {
-      if (bgMusic.paused) {
-        tryPlay().catch(() => {
-          bgMusic.muted = true;
-          tryPlay().catch(() => {});
-        });
-      }
-    },
-    { once: true }
-  );
-})();
+  // Listen for ANY user interaction on the entire webpage
+  document.addEventListener("click", startMusic, { once: true });
+  document.addEventListener("touchstart", startMusic, { once: true });
+  document.addEventListener("keydown", startMusic, { once: true });
+  document.addEventListener("scroll", startMusic, { once: true });
+}
