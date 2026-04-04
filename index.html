@@ -4,31 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ankan Sarkar | Software Engineer & AI Developer</title>
-  <meta
-    name="description"
-    content="Ankan Sarkar's developer portfolio featuring software engineering, AI, cloud, and automation projects."
-  />
+  <meta name="description" content="Ankan Sarkar's developer portfolio featuring software engineering, AI, cloud, and automation projects." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Ankan Sarkar | Software Engineer & AI Developer" />
-  <meta
-    property="og:description"
-    content="Explore projects in AI, cloud, backend engineering, and practical automation solutions."
-  />
-  <meta property="og:url" content="https://your-portfolio-domain.com/" />
-  <meta property="og:image" content="https://your-portfolio-domain.com/preview.png" />
+  <meta property="og:description" content="Explore projects in AI, cloud, backend engineering, and practical automation solutions." />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bgMusic" loop autoplay preload="auto" playsinline>
-    <source src="./bg-music.mp3" type="audio/mpeg" />
+  <audio id="bgMusic" loop>
+    <source src="bg-music.mp3" type="audio/mpeg" />
   </audio>
+
   <canvas id="live-bg" aria-hidden="true"></canvas>
+  
   <header class="site-header">
     <nav class="container nav">
       <a href="#hero" class="brand">MyPortfolio</a>
@@ -53,14 +45,15 @@
             I build robust backend applications, develop machine learning pipelines (MLOps), and design
             user-friendly digital experiences that solve real-world problems.
           </p>
-          <a href="#projects" class="btn">View My Work</a>
+          <div class="hero-actions">
+            <a href="#projects" class="btn">View My Work</a>
+            <a href="./ANKAN_SARKAR.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+              View Resume
+            </a>
+          </div>
         </div>
         <div class="hero-image-wrap">
-          <img
-            src="assets/asdasaaa.jpg"
-            alt="Portrait of Ankan Sarkar"
-            class="hero-image"
-          />
+          <img src="assets/asdasaaa.jpg" alt="Portrait of Ankan Sarkar" class="hero-image" />
         </div>
       </div>
     </section>
@@ -123,12 +116,12 @@
               and automates everyday tasks.
             </p>
             <ul class="stack-list">
-              <li><strong>Core:</strong> Python, speech recognition, text-to-speech libraries.</li>
-              <li><strong>Deployment:</strong> Local execution (future cloud integration planned).</li>
-              <li><strong>Integrations:</strong> System audio input/output, OS-level commands.</li>
+              <li><strong>Core:</strong> Python, speech recognition, text-to-speech.</li>
+              <li><strong>Deployment:</strong> Local execution.</li>
             </ul>
-            
+            <a href="https://github.com/Ankanlearn2003" class="project-link" target="_blank" rel="noopener noreferrer">View Code on GitHub &rarr;</a>
           </article>
+
           <article class="project-card">
             <h3>Facial Recognition Attendance System</h3>
             <p>
@@ -136,23 +129,24 @@
               and Google Sheets in real time.
             </p>
             <ul class="stack-list">
-              <li><strong>Core:</strong> Python, facial recognition libraries (e.g., OpenCV).</li>
-              <li><strong>Deployment:</strong> Cloud architecture (Google Cloud, Render, PythonAnywhere).</li>
-              <li><strong>Integrations:</strong> Google Sheets API, local CSV handling, camera/video feed.</li>
+              <li><strong>Core:</strong> Python, OpenCV.</li>
+              <li><strong>Integrations:</strong> Google Sheets API, local CSV.</li>
             </ul>
-            
+            <a href="https://github.com/Ankanlearn2003" class="project-link" target="_blank" rel="noopener noreferrer">View Code on GitHub &rarr;</a>
           </article>
+
           <article class="project-card">
-            <h3>Automated Cloud Data Collection System</h3>
+            <h3>Automated Cloud Data Collection</h3>
             <p>
               A serverless data collection pipeline that captures user inputs via a custom web-based HTML form and automatically logs the structured data directly into a Google Spreadsheet.
             </p>
             <ul class="stack-list">
-              <li><strong>Frontend:</strong> HTML, CSS, JavaScript.</li>
-              <li><strong>Backend/Storage:</strong> Google Apps Script, Google Sheets API.</li>
-              <li><strong>Deployment:</strong> Cloud-based serverless execution.</li>
+              <li><strong>Core:</strong> HTML, CSS, JavaScript.</li>
+              <li><strong>Backend:</strong> Google Apps Script, Sheets API.</li>
             </ul>
+            <a href="https://github.com/Ankanlearn2003" class="project-link" target="_blank" rel="noopener noreferrer">View Code on GitHub &rarr;</a>
           </article>
+
           <article class="project-card">
             <h3>Automated Birthday Emailer</h3>
             <p>
@@ -161,11 +155,11 @@
             </p>
             <ul class="stack-list">
               <li><strong>Core:</strong> Python.</li>
-              <li><strong>Deployment:</strong> Scheduled background script (local or PythonAnywhere).</li>
-              <li><strong>Integrations:</strong> Google Sheets API, SMTP server for email dispatch.</li>
+              <li><strong>Integrations:</strong> Google Sheets API, SMTP server.</li>
             </ul>
-            
+            <a href="https://github.com/Ankanlearn2003" class="project-link" target="_blank" rel="noopener noreferrer">View Code on GitHub &rarr;</a>
           </article>
+
           <article class="project-card">
             <h3>AI-Based Demand Forecasting System</h3>
             <p>
@@ -174,11 +168,11 @@
             </p>
             <ul class="stack-list">
               <li><strong>Core:</strong> Python, Pandas, Scikit-Learn.</li>
-              <li><strong>Deployment:</strong> MLOps pipeline with cloud deployment (Google Cloud or Render).</li>
-              <li><strong>Integrations:</strong> Historical data ingestion from CSV or database.</li>
+              <li><strong>Deployment:</strong> MLOps pipeline, Google Cloud/Render.</li>
             </ul>
-            
+            <a href="https://github.com/Ankanlearn2003" class="project-link" target="_blank" rel="noopener noreferrer">View Code on GitHub &rarr;</a>
           </article>
+
           <article class="project-card">
             <h3>Automatic CV Generator</h3>
             <p>
@@ -186,20 +180,11 @@
               automatically.
             </p>
             <ul class="stack-list">
-              <li><strong>Core:</strong> Python, Flask, PDF/document generation libraries.</li>
-              <li><strong>Deployment:</strong> Web app deployment (Render, PythonAnywhere).</li>
-              <li><strong>Integrations:</strong> Frontend user forms and document export handlers.</li>
+              <li><strong>Core:</strong> Python, Flask, PDF libraries.</li>
+              <li><strong>Deployment:</strong> Render, PythonAnywhere.</li>
             </ul>
-            <a
-              href="https://cv-maker-wwi9.onrender.com/"
-              class="project-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Render website of the project &rarr;
-            </a>
+            <a href="https://cv-maker-wwi9.onrender.com/" class="project-link" target="_blank" rel="noopener noreferrer">View Live Demo &rarr;</a>
           </article>
-          
         </div>
       </div>
     </section>
@@ -208,13 +193,7 @@
       <div class="container">
         <h2>Contact</h2>
         <div class="contact-layout">
-          <form
-            id="contactForm"
-            class="contact-form"
-            action="https://formspree.io/f/xeepllld"
-            method="POST"
-            novalidate
-          >
+          <form id="contactForm" class="contact-form" action="https://formspree.io/f/xeepllld" method="POST" novalidate>
             <input type="hidden" name="_subject" value="New Portfolio Contact Message" />
             <input type="hidden" name="_captcha" value="false" />
             <div class="field">
@@ -236,34 +215,14 @@
           <aside class="social-card" aria-label="Online contact links">
             <h3>Online Media</h3>
             <div class="social-links">
-              <a
-                class="social-icon"
-                href="https://github.com/Ankanlearn2003"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub profile"
-                title="GitHub"
-              >
+              <a class="social-icon" href="https://github.com/Ankanlearn2003" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" title="GitHub">
                 <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
-                  <path
-                    fill="currentColor"
-                    d="M12 2C6.48 2 2 6.59 2 12.26c0 4.53 2.87 8.38 6.84 9.74.5.1.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .08 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05A9.33 9.33 0 0 1 12 6.84c.85 0 1.7.12 2.5.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.64 1.03 2.76 0 3.94-2.35 4.8-4.59 5.06.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .27.18.59.69.49A10.27 10.27 0 0 0 22 12.26C22 6.59 17.52 2 12 2Z"
-                  />
+                  <path fill="currentColor" d="M12 2C6.48 2 2 6.59 2 12.26c0 4.53 2.87 8.38 6.84 9.74.5.1.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .08 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05A9.33 9.33 0 0 1 12 6.84c.85 0 1.7.12 2.5.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.64 1.03 2.76 0 3.94-2.35 4.8-4.59 5.06.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .27.18.59.69.49A10.27 10.27 0 0 0 22 12.26C22 6.59 17.52 2 12 2Z" />
                 </svg>
               </a>
-              <a
-                class="social-icon"
-                href="https://www.linkedin.com/in/ankan-sarkar-596a29376/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn profile"
-                title="LinkedIn"
-              >
+              <a class="social-icon" href="https://www.linkedin.com/in/ankan-sarkar-596a29376/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn">
                 <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
-                  <path
-                    fill="currentColor"
-                    d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.38a1.56 1.56 0 0 1 0 3.12ZM5.56 9.75h2.77V18H5.56V9.75Zm4.33 0h2.65v1.13h.04c.37-.7 1.28-1.43 2.64-1.43 2.83 0 3.35 1.9 3.35 4.37V18H15.8v-3.7c0-.88-.02-2.01-1.2-2.01-1.2 0-1.38.95-1.38 1.95V18H9.89V9.75Z"
-                  />
+                  <path fill="currentColor" d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.38a1.56 1.56 0 0 1 0 3.12ZM5.56 9.75h2.77V18H5.56V9.75Zm4.33 0h2.65v1.13h.04c.37-.7 1.28-1.43 2.64-1.43 2.83 0 3.35 1.9 3.35 4.37V18H15.8v-3.7c0-.88-.02-2.01-1.2-2.01-1.2 0-1.38.95-1.38 1.95V18H9.89V9.75Z" />
                 </svg>
               </a>
             </div>
