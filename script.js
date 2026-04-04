@@ -184,3 +184,45 @@ if (scrollTargets.length > 0) {
 
   scrollTargets.forEach((element) => observer.observe(element));
 }
+
+// Background music: browsers block unmuted autoplay — try loud play, else muted play, unmute on first gesture
+(function initBgMusic() {
+  const bgMusic = document.getElementById("bgMusic");
+  if (!bgMusic) return;
+
+  bgMusic.volume = 0.15;
+  bgMusic.muted = false;
+
+  const tryPlay = () => bgMusic.play();
+
+  let unlocked = false;
+  function unlockAudio() {
+    if (unlocked) return;
+    unlocked = true;
+    bgMusic.muted = false;
+    bgMusic.volume = 0.15;
+    tryPlay().catch(() => {});
+  }
+
+  document.addEventListener("pointerdown", unlockAudio, { capture: true, passive: true });
+  document.addEventListener("touchstart", unlockAudio, { capture: true, passive: true });
+  document.addEventListener("keydown", unlockAudio, { capture: true });
+
+  tryPlay().catch(() => {
+    bgMusic.muted = true;
+    tryPlay().catch(() => {});
+  });
+
+  bgMusic.addEventListener(
+    "canplay",
+    () => {
+      if (bgMusic.paused) {
+        tryPlay().catch(() => {
+          bgMusic.muted = true;
+          tryPlay().catch(() => {});
+        });
+      }
+    },
+    { once: true }
+  );
+})();
